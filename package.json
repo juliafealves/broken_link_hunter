@@ -1,0 +1,16 @@
+{
+  "name": "broken_link_hunter",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Júlia Fernandes Alves <juliafealves@gmail.com> (https://github.com/juliafealves)",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.2.0"
+  }
+}
