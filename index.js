@@ -7,8 +7,7 @@ function handleError(error) {
 
 async function readFile(path) {
   try {
-    const content = await fs.promises.readFile(path, "utf-8");
-    console.log(chalk.green(content));
+    return await fs.promises.readFile(path, "utf-8");
   } catch (error) {
     handleError(error);
   } finally {
@@ -16,4 +15,14 @@ async function readFile(path) {
   }
 }
 
-readFile("./files/text.md");
+function searchLinksMarkdown(text) {
+  const regex = /\[([^[\]]*?)]\((https?:\/\/[^\s?#.].\S*)\)/gm;
+  const links = [...text.matchAll(regex)];
+  return links.map((link) => ({ [link[1]]: link[2] }));
+}
+
+(async () => {
+  const text = await readFile("./files/text.md");
+  const links = searchLinksMarkdown(text);
+  console.log(chalk.blue(links));
+})();
