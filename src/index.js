@@ -21,8 +21,9 @@ function searchLinksMarkdown(text) {
   return links.map((link) => ({ [link[1]]: link[2] }));
 }
 
-(async () => {
-  const text = await readFile("./files/text.md");
-  const links = searchLinksMarkdown(text);
-  console.log(chalk.blue(links));
-})();
+async function brokenLinkHunter(path) {
+  const text = await readFile(path);
+  return searchLinksMarkdown(text);
+}
+
+export default brokenLinkHunter;
